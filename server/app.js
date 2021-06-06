@@ -9,8 +9,9 @@ const app = express();
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@books.agsvd.mongodb.net/test`,
 { useUnifiedTopology: true, useNewUrlParser: true })
+
 mongoose.connection.once('open', () => {
-    console.log('connected to database');
+    console.log('Database is connected...');
 });
 
 app.use('/graphql', graphqlHTTP({
@@ -20,6 +21,6 @@ app.use('/graphql', graphqlHTTP({
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
- console.log(`Server is listening on port: ${port}`);
+ console.log(`Server is listening on port: ${port}!`);
 });
 
